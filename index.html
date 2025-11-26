@@ -220,7 +220,7 @@ html
             transform-style: preserve-3d; transition: transform 0.1s ease-out;
         }
         .preview-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.5; background-size: cover; pointer-events: none; display: none; mix-blend-mode: multiply; }
-        .preview-color { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; mix-blend-mode: overlay; transition: opacity 0.3s; }
+        .preview-color { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; mix-blend-mode: color; transition: opacity 0.3s; }
         @keyframes rotate-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .workbench-icon.working { animation: rotate-slow 10s linear infinite; color: #4facfe !important; opacity: 1 !important;}
         .control-panel h3 { margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
@@ -1344,7 +1344,7 @@ html
         function selectMat(el, imgFile) { 
             document.querySelectorAll('.material-card').forEach(d => d.classList.remove('selected')); 
             el.classList.add('selected'); 
-            // Removed logic that changes preview-texture background image
+            // REMOVED: Image swapping logic. Left preview now remains unchanged.
         }
         function selectColor(el, colorCode) { document.querySelectorAll('.color-circle').forEach(d => d.classList.remove('selected')); el.classList.add('selected'); const colorOverlay = document.getElementById('preview-color'); if(colorCode === 'transparent') { colorOverlay.style.backgroundColor = 'transparent'; colorOverlay.style.opacity = 0; } else { colorOverlay.style.backgroundColor = colorCode; colorOverlay.style.opacity = 0.6; } }
         
