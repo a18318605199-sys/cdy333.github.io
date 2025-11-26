@@ -1254,7 +1254,20 @@ html
             nav('designer-detail'); 
         }
 
-        function navToWorkbenchWithItem() { document.getElementById('wb-project-name').innerText = currentItemName; document.getElementById('wb-project-name').style.color = "#fff"; nav('workbench'); }
+        function navToWorkbenchWithItem() { 
+            document.getElementById('wb-project-name').innerText = currentItemName; 
+            document.getElementById('wb-project-name').style.color = "#fff"; 
+            
+            // Set Preview Image based on current detail image
+            const detailImgSrc = document.getElementById('detail-img-target').src;
+            const previewOverlay = document.getElementById('preview-texture');
+            previewOverlay.style.backgroundImage = `url(${detailImgSrc})`;
+            previewOverlay.style.opacity = 1;
+            previewOverlay.style.display = 'block';
+
+            nav('workbench'); 
+        }
+
         function selectMat(el, imgFile) { document.querySelectorAll('.material-card').forEach(d => d.classList.remove('selected')); el.classList.add('selected'); const previewOverlay = document.getElementById('preview-texture'); if(imgFile) { previewOverlay.style.backgroundImage = `url(${imgFile})`; previewOverlay.style.display = 'block'; } }
         function selectColor(el, colorCode) { document.querySelectorAll('.color-circle').forEach(d => d.classList.remove('selected')); el.classList.add('selected'); const colorOverlay = document.getElementById('preview-color'); if(colorCode === 'transparent') { colorOverlay.style.backgroundColor = 'transparent'; colorOverlay.style.opacity = 0; } else { colorOverlay.style.backgroundColor = colorCode; colorOverlay.style.opacity = 0.6; } }
         
